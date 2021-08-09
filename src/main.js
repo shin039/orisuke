@@ -1,7 +1,7 @@
 import { StatusBar }                      from 'expo-status-bar';
 import React                              from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import {st_main}                          from 'orisuke/styles/main_styles';
+import {st_main}                          from 'orisuke/src/styles/main_styles';
 
 // -----------------------------------------------------------------------------
 // Const

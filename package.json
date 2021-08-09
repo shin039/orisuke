@@ -1,5 +1,5 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "_Entry.js",
   "#cmt1": "# nameをつけておくと、絶対パス指定ができる。",
   "name": "orisuke",
   "scripts": {
