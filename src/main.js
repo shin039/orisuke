@@ -1,24 +1,46 @@
-import { StatusBar }                      from 'expo-status-bar';
+// -----------------------------------------------------------------------------
+// Import from Native
+// -----------------------------------------------------------------------------
 import React                              from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import {st_main}                          from 'orisuke/src/styles/main_styles';
+import { NavigationContainer }            from '@react-navigation/native';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+}                                         from '@react-navigation/drawer';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Import from Orisuke
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+import CountCalc  from 'orisuke/src/screen/CountCalc';
+import LengthCalc from 'orisuke/src/screen/LengthCalc';
 
 // -----------------------------------------------------------------------------
 // Const
 // -----------------------------------------------------------------------------
-const styles = StyleSheet.create(st_main);
+const Drawer = createDrawerNavigator();
+
+// -----------------------------------------------------------------------------
+// Functions
+// -----------------------------------------------------------------------------
+function DrawScreen(){
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="CountCalc"  component={CountCalc}  />
+      <Drawer.Screen name="LengthCalc" component={LengthCalc} />
+    </Drawer.Navigator>
+  );
+}
 
 // -----------------------------------------------------------------------------
 // Main
 // -----------------------------------------------------------------------------
-export default function App() {
+export default function Main() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <Button color="#8e8e8e" onPress={()=>{console.log("Push!")}} title="Push!" />
-      {/* これはいるのか？ */}
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <DrawScreen />
+      </NavigationContainer>
   );
 }
 
