@@ -6,6 +6,8 @@ import { prepareRender } from './_CommonScreen';
 // -----------------------------------------------------------------------------
 // Main
 // -----------------------------------------------------------------------------
-export default function LengthCacl() {
-  return prepareRender( <Text>Length Calc</Text>);
+export default function Settings() {
+  return prepareRender(
+    <Text>Settings</Text>
+  );
 }

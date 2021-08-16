@@ -1,9 +1,9 @@
 // -----------------------------------------------------------------------------
-// 多言語対応: 日本語
+// 多言語対応: 英語
 // -----------------------------------------------------------------------------
 // TODO
 export default {
-  count_calc : { name: "番手計算" },
-  length_calc: { name: "長さ計算" },
-  settings   : { name: "設定" }
+  count_calc : { name: "Count Calc"  },
+  length_calc: { name: "Length Calc" },
+  settings   : { name: "Settings"    }
 }

@@ -2,36 +2,26 @@
 // Import from Native
 // -----------------------------------------------------------------------------
 import React from 'react';
-import { StatusBar }                      from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { NavigationContainer }            from '@react-navigation/native';
-
+import { StatusBar }           from 'expo-status-bar';
+import { StyleSheet, View }    from 'react-native';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Import from Orisuke
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-import {st_main}  from 'orisuke/src/styles/main_styles';
+import {st_universal}  from 'orisuke/src/styles/main_styles';
 
 // -----------------------------------------------------------------------------
 // Const
 // -----------------------------------------------------------------------------
-const styles = StyleSheet.create(st_main);
+const styles = StyleSheet.create(st_universal);
 
 // -----------------------------------------------------------------------------
-// Abstract Class
+// Common Function
 // -----------------------------------------------------------------------------
-export default class AbstractScreen extends React.Component {
-
-  // 共通パーツを設定する。
-  setComponent(content){
+export function prepareRender(child_content){
     return (
-      <View style={styles.container}>
-        {content}
-        {/* DEBUG: これはいるのか？ */}
-        <StatusBar style="auto" />
-      </View>
+        <View style={styles.container}>
+          {child_content}
+        </View>
     );
-  }
-
 }
-
