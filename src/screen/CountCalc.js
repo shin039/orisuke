@@ -17,13 +17,12 @@ const styles = getCommonStyle();
 const _cotton =  5315.0;
 const _linen  = 14882.0;
 const _wool   =  9000.0;
-const _kujira =   3.789;
 
 // -----------------------------------------------------------------------------
 // Function
 // -----------------------------------------------------------------------------
 const decimalRound = (src)       => (Math.round(src * 10.0) / 10.0);  // 小数点第1桁で四捨五入する
-const calcDenier   = (src, coef) => decimalRound(coef   / src);       // src: 各番手の数値, coef: 係数
+const calcDenier   = (src, coef) => decimalRound(coef    / src);      // src: 各番手の数値, coef: 係数
 const calcCotton   = (denier)    => decimalRound(_cotton / denier);
 const calcWool     = (denier)    => decimalRound(_wool   / denier);
 const calcLinen    = (denier)    => decimalRound(_linen  / denier);
@@ -48,13 +47,14 @@ const onSubmit = (event, exec_bit, setters, coef) => {
 }
 
 // Reflect React Component by Input Value
-const onChangeInput = (value, valSet, errSet) => {
+const onChangeInput = (value, valSet, errSet, Lc) => {
+
   // Set Changing Value
   valSet(value);
 
   // Input Check
   errSet('');
-  const ERR_MSG_INPUT = "ERROR INPUT";
+  const ERR_MSG_INPUT = Lc.error;
 
   const reg_numeric  = /^[0-9.]+$/;
   const result_check = value.match(reg_numeric);
@@ -103,16 +103,16 @@ export default () => {
       <Text style={styles.header}></Text>
 
       <Text style={styles.label}>{Lc.denier}</Text>
-      <Input placeholder={Lc.denier} errorStyle={{ color: 'red' }} value={denier} errorMessage={err_denier} onChangeText={(val) => onChangeInput(val, setDenier, setErrDenier)} onSubmitEditing={(e) => onSubmit(e, 14, setters)} />
+      <Input placeholder={Lc.denier} errorStyle={{ color: 'red' }} value={denier} errorMessage={err_denier} onChangeText={(val) => onChangeInput(val, setDenier, setErrDenier, Lc)} onSubmitEditing={(e) => onSubmit(e, 14, setters)} />
 
       <Text style={styles.label}>{Lc.cotton}</Text>
-      <Input placeholder={Lc.cotton} errorStyle={{ color: 'red' }} value={cotton} errorMessage={err_cotton} onChangeText={(val) => onChangeInput(val, setCotton, setErrCotton)} onSubmitEditing={(e) => onSubmit(e, 13, setters, _cotton)} />
+      <Input placeholder={Lc.cotton} errorStyle={{ color: 'red' }} value={cotton} errorMessage={err_cotton} onChangeText={(val) => onChangeInput(val, setCotton, setErrCotton, Lc)} onSubmitEditing={(e) => onSubmit(e, 13, setters, _cotton)} />
 
       <Text style={styles.label}>{Lc.wool}</Text>
-      <Input placeholder={Lc.wool}   errorStyle={{ color: 'red' }} value={wool}   errorMessage={err_wool}   onChangeText={(val) => onChangeInput(val, setWool,   setErrWool)}   onSubmitEditing={(e) => onSubmit(e, 11, setters, _wool)} />
+      <Input placeholder={Lc.wool}   errorStyle={{ color: 'red' }} value={wool}   errorMessage={err_wool}   onChangeText={(val) => onChangeInput(val, setWool,   setErrWool, Lc)}   onSubmitEditing={(e) => onSubmit(e, 11, setters, _wool)} />
 
       <Text style={styles.label}>{Lc.linen}</Text>
-      <Input placeholder={Lc.linen}  errorStyle={{ color: 'red' }} value={linen}  errorMessage={err_linen}  onChangeText={(val) => onChangeInput(val, setLinen,  setErrLinen)}  onSubmitEditing={(e) => onSubmit(e,  7, setters, _linen)} />
+      <Input placeholder={Lc.linen}  errorStyle={{ color: 'red' }} value={linen}  errorMessage={err_linen}  onChangeText={(val) => onChangeInput(val, setLinen,  setErrLinen, Lc)}  onSubmitEditing={(e) => onSubmit(e,  7, setters, _linen)} />
 
       <Divider />
 

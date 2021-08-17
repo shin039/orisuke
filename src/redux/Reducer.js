@@ -5,7 +5,7 @@ import { combineReducers } from 'redux'
 import { ACTION }          from './Action';
 
 // 初期値設定のため
-import {getLocale}         from 'orisuke/src/locale';
+import {getLocale}         from 'orisuke/src/settings/locale';
 
 // - - - - - - - - - - - - - - - - - - - - - - - 
 // Reducers 

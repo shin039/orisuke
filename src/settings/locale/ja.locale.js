@@ -11,8 +11,10 @@ export default {
     wool  : "毛番手",
     linen : "麻番手",
     clear : "クリア",
+    error : "0~9の数字を入力してください",
   },
   length_calc: { name: "長さ計算"   },
   settings   : { name: "設定", language: '言語'},
+  scale      : {whale: "鯨寸", inch: "インチ", cm: "センチ"},
   _library   : { name: "ライブラリ" },
 }

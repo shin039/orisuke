@@ -26,8 +26,8 @@ import CountCalc   from 'orisuke/src/screen/CountCalc';
 import LengthCalc  from 'orisuke/src/screen/LengthCalc';
 import Settings    from 'orisuke/src/screen/Settings';
 
-import {fetchLocaleCode}  from 'orisuke/src/asyncStorage';
-import {getLocale}        from 'orisuke/src/locale';
+import {fetchLocaleCode}  from 'orisuke/src/settings/asyncStorage';
+import {getLocale}        from 'orisuke/src/settings/locale';
 
 // -----------------------------------------------------------------------------
 // Functions
@@ -41,8 +41,12 @@ function ExMenu(props){
         {/* Draw.Screenの子要素 */}
         <DrawerItemList {...props} />
 
-        {/* DEBUG:Reload Button */}
-        <DrawerItem label={Lc.ex_menu.close} onPress={() => {props.navigation.closeDrawer();}} />
+        {/* Close Button */}
+        <DrawerItem 
+           label={Lc.ex_menu.close}
+           onPress={() => {props.navigation.closeDrawer();}}
+           labelStyle={{color: "red"}}
+        />
       </DrawerContentScrollView>
     );
 }
@@ -69,10 +73,10 @@ function DrawScreen(){
     <NavigationContainer>
       <Drawer.Navigator drawerContent={(props) => <ExMenu {...props} />}
     >
-        <Drawer.Screen name={"CountCalc"}  options={{title: Lc.count_calc.name, drawerContentStyle: {backgroundColor: '#0F0'} }}  component={CountCalc}  />
+        <Drawer.Screen name={"CountCalc"}  options={{title: Lc.count_calc.name}}  component={CountCalc}  />
         <Drawer.Screen name={"LengthCalc"} options={{title: Lc.length_calc.name}} component={LengthCalc} />
         <Drawer.Screen name={"Settings"}   options={{title: Lc.settings.name}}    component={Settings}   />
-        <Drawer.Screen name={"Library"}    options={{title: Lc._library.name}}    component={_Library}   />
+        {/*<Drawer.Screen name={"Library"}    options={{title: Lc._library.name}}    component={_Library}   />*/}
       </Drawer.Navigator>
     </NavigationContainer>
   );

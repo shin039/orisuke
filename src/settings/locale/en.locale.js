@@ -11,8 +11,10 @@ export default {
     wool  : "Wool",
     linen : "Linen",
     clear : "Clear",
+    error : "Input Number[0~9]",
   },
   length_calc: { name: "Length Calc" },
   settings   : { name: "Settings", language: 'Language'},
+  scale      : {whale: "Whale Scale", inch: "Inch Scale", cm: "Centi Meter"},
   _library   : { name: "Library"     },
 }

@@ -9,9 +9,9 @@ import { Divider }                  from 'react-native-elements';
 // Orisuke's Library
 import { prepareRender }  from 'orisuke/src/screen/_CommonScreen';
 import { getCommonStyle } from 'orisuke/src/styles/main_styles';
-import * as LCS           from 'orisuke/src/locale';
+import * as LCS           from 'orisuke/src/settings/locale';
 import { setLocale }      from 'orisuke/src/redux/Action';
-import { saveLocaleCode } from 'orisuke/src/asyncStorage';
+import { saveLocaleCode } from 'orisuke/src/settings/asyncStorage';
 
 // -----------------------------------------------------------------------------
 // Const
