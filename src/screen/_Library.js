@@ -27,13 +27,23 @@ function stateManShow(){
 // -----------------------------------------------------------------------------
 // Style
 // -----------------------------------------------------------------------------
+// NOTE: 色確認をシームレスに行うため、ここに記載している。
+//       main_style.jsに記載すると、Reloadしないといけないので。
+const palet = {
+  basic : "#FDFDFD",
+  dark  : "#215270",
+  middle: "#85C3D8",
+  light : "#C0FFFA",
+  accent: "#FCB612",
+}
+
 // NOTE: StyleSheet.create()による変換が重要。
 const style = RN.StyleSheet.create({
-  header   : {fontSize: 18, color: '#FFF', backgroundColor: '#000', padding: 10},
-  label    : {fontSize: 14, color: '#FFF', backgroundColor: '#999', paddingLeft: 10, padding: 5 },
-  textInput: {fontSize: 14, backgroundColor: '#FFF', paddingLeft: 10, padding: 5},
-  toButton : {backgroundColor: '#77F', padding: 10},
-  tbText   : {color: '#FFF', textAlign: 'center'},
+  header   : {fontSize: 18, color: palet.basic, backgroundColor: palet.dark, padding: 10},
+  label    : {fontSize: 14, color: palet.basic, backgroundColor: palet.accent, paddingLeft: 10, padding: 5 },
+  textInput: {fontSize: 14,  paddingLeft: 10, padding: 5},
+  toButton : {backgroundColor: palet.light, padding: 10},
+  tbText   : {color: palet.dark, textAlign: 'center'},
   // EL
   cardrow  : {flexDirection: 'row'},
 });
@@ -71,7 +81,7 @@ export default () => {
 
         {/* ボタン */}
         <RN.Text style={style.label}>Button</RN.Text>
-        <RN.Button color="#77F" onPress={stateManShow} title="Push!" />
+        <RN.Button color={palet.middle} onPress={stateManShow} title="Push!" />
 
         {/* ボタン2 */}
         <RN.Text style={style.label}>TouchableOpacity</RN.Text>

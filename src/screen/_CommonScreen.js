@@ -1,19 +1,19 @@
 // -----------------------------------------------------------------------------
 // Import from Native
 // -----------------------------------------------------------------------------
-import React from 'react';
-import { StatusBar }           from 'expo-status-bar';
-import { StyleSheet, View }    from 'react-native';
+import React         from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { View }      from 'react-native';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Import from Orisuke
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-import {st_universal}  from 'orisuke/src/styles/main_styles';
+import {getContainerStyle}  from 'orisuke/src/styles/main_styles';
 
 // -----------------------------------------------------------------------------
 // Const
 // -----------------------------------------------------------------------------
-const styles = StyleSheet.create(st_universal);
+const styles = getContainerStyle();
 
 // -----------------------------------------------------------------------------
 // Common Function

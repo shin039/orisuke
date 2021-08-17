@@ -1,9 +1,18 @@
 // -----------------------------------------------------------------------------
 // 多言語対応: 日本語
 // -----------------------------------------------------------------------------
-// TODO
 export default {
-  count_calc : { name: "番手計算" },
-  length_calc: { name: "長さ計算" },
-  settings   : { name: "設定" }
+  code       : "ja",
+  ex_menu    : { close: "閉じる"    },
+  count_calc : { 
+    name  : "番手計算",
+    denier: "デニール",
+    cotton: "綿番手",
+    wool  : "毛番手",
+    linen : "麻番手",
+    clear : "クリア",
+  },
+  length_calc: { name: "長さ計算"   },
+  settings   : { name: "設定", language: '言語'},
+  _library   : { name: "ライブラリ" },
 }
