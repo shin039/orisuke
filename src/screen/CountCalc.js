@@ -31,6 +31,8 @@ const calcLinen    = (denier)    => decimalRound(_linen  / denier);
 const onSubmit = (event, exec_bit, setters, coef) => {
   const val = parseFloat(event.nativeEvent.text);
 
+  if(! val) return;
+
   // At first, calc denier.
   const denier = (exec_bit & 1)? calcDenier(val, coef): val;
 
@@ -65,10 +67,8 @@ const onChangeInput = (value, valSet, errSet, Lc) => {
 
 // Clear All
 const clearAll = (setters) => {
-  setters.denier('');
-  setters.cotton('');
-  setters.wool  ('');
-  setters.linen ('');
+  Object.values(setters)
+    .forEach((func) => func(''));
 }
 
 // -----------------------------------------------------------------------------
@@ -91,17 +91,14 @@ export default () => {
     linen : setLinen
   }
 
-  const [err_denier, setErrDenier] = useState(''); 
-  const [err_cotton, setErrCotton] = useState(''); 
-  const [err_wool  , setErrWool]   = useState(''); 
-  const [err_linen , setErrLinen]  = useState(''); 
+  const [err_denier, setErrDenier] = useState('');
+  const [err_cotton, setErrCotton] = useState('');
+  const [err_wool  , setErrWool  ] = useState('');
+  const [err_linen , setErrLinen ] = useState('');
 
   // render
   return prepareRender(
     <>
-      {/* テキスト表示 */}
-      <Text style={styles.header}></Text>
-
       <Text style={styles.label}>{Lc.denier}</Text>
       <Input placeholder={Lc.denier} errorStyle={{ color: 'red' }} value={denier} errorMessage={err_denier} onChangeText={(val) => onChangeInput(val, setDenier, setErrDenier, Lc)} onSubmitEditing={(e) => onSubmit(e, 14, setters)} />
 

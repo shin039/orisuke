@@ -45,7 +45,6 @@ const makeHtml = () => {
   return (
     <View>
       {/* テキスト表示 */}
-      <Text style={styles.header}></Text>
       <Text style={styles.label}>{Lc.settings.language}</Text>
         <Picker selectedValue={st_locale} onValueChange={onChangeLocale} >
           {(LCS.LC_LANGUAGES).map((record, idx) => {

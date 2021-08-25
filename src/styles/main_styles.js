@@ -12,6 +12,7 @@ export const palet = {
   middle: "#85C3D8",
   light : "#C0FFFA",
   accent: "#FCB612",
+  notice: "#F76369",
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -29,11 +30,31 @@ const st_container = {
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Drawer Menu
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+export const getDrawerStyle = () => {
+  return {
+    drawer: {
+      drawerLabelStyle           : {color: palet.basic},
+      drawerStyle                : {backgroundColor: palet.dark},
+      drawerActiveBackgroundColor: palet.notice,
+    },
+    closeBtn: {color: palet.notice}
+  };
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Header
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+export const getHeaderStyle = () => {
+  return {headerTintColor: palet.basic, headerStyle: {backgroundColor: palet.dark}};
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Common Components
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 export const getCommonStyle = () => { return StyleSheet.create(st_common) }
 
 const st_common = {
-  header   : {fontSize: 18, color: palet.basic, backgroundColor: palet.dark, padding: 10},
   label    : {fontSize: 14, color: palet.basic, backgroundColor: palet.accent, paddingLeft: 10, padding: 5 },
 }

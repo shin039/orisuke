@@ -8,7 +8,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
-}                              from '@react-navigation/drawer';
+} from '@react-navigation/drawer';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Import Redux
@@ -29,12 +29,15 @@ import Settings    from 'orisuke/src/screen/Settings';
 import {fetchLocaleCode}  from 'orisuke/src/settings/asyncStorage';
 import {getLocale}        from 'orisuke/src/settings/locale';
 
+import {getHeaderStyle, getDrawerStyle} from 'orisuke/src/styles/main_styles';
+
 // -----------------------------------------------------------------------------
 // Functions
 // -----------------------------------------------------------------------------
 // Extra Menu For Drawer.Navigator
 function ExMenu(props){
-  const Lc       = useSelector(state => state.locale);
+  const Lc          = useSelector(state => state.locale);
+  const drawerStyle = getDrawerStyle();
 
   return (
       <DrawerContentScrollView {...props}>
@@ -45,7 +48,7 @@ function ExMenu(props){
         <DrawerItem 
            label={Lc.ex_menu.close}
            onPress={() => {props.navigation.closeDrawer();}}
-           labelStyle={{color: "red"}}
+           labelStyle={{...drawerStyle.closeBtn}}
         />
       </DrawerContentScrollView>
     );
@@ -61,9 +64,11 @@ function init(param){
 
 // Drawer Navigater
 function DrawScreen(){
-  const Drawer   = createDrawerNavigator();
-  const Lc       = useSelector(state => state.locale);
-  const dispatch = useDispatch();
+  const Drawer      = createDrawerNavigator();
+  const Lc          = useSelector(state => state.locale);
+  const dispatch    = useDispatch();
+  const headerStyle = getHeaderStyle();
+  const drawerStyle = getDrawerStyle();
 
   // 初期設定
   const param = {dispatch: dispatch};
@@ -71,11 +76,11 @@ function DrawScreen(){
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <ExMenu {...props} />}
+      <Drawer.Navigator screenOptions={{...drawerStyle.drawer}} drawerContent={(props) => <ExMenu {...props} />}
     >
-        <Drawer.Screen name={"CountCalc"}  options={{title: Lc.count_calc.name}}  component={CountCalc}  />
-        <Drawer.Screen name={"LengthCalc"} options={{title: Lc.length_calc.name}} component={LengthCalc} />
-        <Drawer.Screen name={"Settings"}   options={{title: Lc.settings.name}}    component={Settings}   />
+        <Drawer.Screen name={"CountCalc"}  options={{title: Lc.count_calc.name,  ...headerStyle}} component={CountCalc}  />
+        <Drawer.Screen name={"LengthCalc"} options={{title: Lc.length_calc.name, ...headerStyle}} component={LengthCalc} />
+        <Drawer.Screen name={"Settings"}   options={{title: Lc.settings.name,    ...headerStyle}} component={Settings}   />
         {/*<Drawer.Screen name={"Library"}    options={{title: Lc._library.name}}    component={_Library}   />*/}
       </Drawer.Navigator>
     </NavigationContainer>
