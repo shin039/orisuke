@@ -39,7 +39,7 @@ export const getDrawerStyle = () => {
       drawerStyle                : {backgroundColor: palet.dark},
       drawerActiveBackgroundColor: palet.notice,
     },
-    closeBtn: {color: palet.notice}
+    closeBtn: {color: palet.middle}
   };
 }
 
@@ -56,5 +56,8 @@ export const getHeaderStyle = () => {
 export const getCommonStyle = () => { return StyleSheet.create(st_common) }
 
 const st_common = {
-  label    : {fontSize: 14, color: palet.basic, backgroundColor: palet.accent, paddingLeft: 10, padding: 5 },
+  label  : {fontSize: 14, color: palet.basic, backgroundColor: palet.accent, paddingLeft: 10, padding: 5 },
+  t_menu : {textDecorationLine: "underline", color: palet.middle},
+  v_flex : {flex: 1, flexDirection: 'row', justifyContent: 'flex-start'},
 }
+
