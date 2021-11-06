@@ -2,7 +2,7 @@ import React, {useState}          from 'react';
 import { View, Text }             from 'react-native';
 import { Input, Button, Divider } from 'react-native-elements';
 import { useSelector }            from 'react-redux';
-
+import { DrawerActions }          from '@react-navigation/native';
 // Orisuke's Library
 import { prepareRender }  from 'orisuke/src/screen/_CommonScreen';
 import { getCommonStyle } from 'orisuke/src/styles/main_styles';
@@ -23,9 +23,9 @@ const _kujira = 3.789;
 const decimalRound = (src) => (Math.round(src * 10.0) / 10.0);  // 小数点第1桁で四捨五入する
 
 // Calc Count's By Input Value
-const onSubmit = (event, Lc, datas, setters, errSet, err_setters) => {
+const onSubmit = (event, Sc, Lc, datas, setters, errSet, err_setters) => {
 
-  const scale = _kujira; // TODO scaleを設定で変更できるように。
+  const scale = Sc.scale;
   const {density, threads, length} = datas;
 
   clearAll(err_setters);
@@ -83,9 +83,13 @@ const clearAll = (setters) => {
 // -----------------------------------------------------------------------------
 // Main
 // -----------------------------------------------------------------------------
-export default function LengthCalc() {
+export default function LengthCalc({navigation}) {
+
+
   // Redux
-  const Lc = (useSelector(state => state.locale)).length_calc;
+  const L  = useSelector(state => state.locale);
+  const Lc = L.length_calc;
+  const Sc = useSelector(state => state.scale);
   
   // State
   const [density, setDensity] = useState(''); 
@@ -111,20 +115,22 @@ export default function LengthCalc() {
     err_length : setErrLength ,
   }
 
+  // Page Jump Action
+  const jumpSetting = DrawerActions.jumpTo('Settings');
+
   // render
   return prepareRender(
     <>
       <View sytle={_styles.v_flex}>
-        <Text style={{..._styles.label, width: '50%'}} >{Lc.density}   </Text>
-        <Text style={{..._styles.t_menu, width:'50%'}} onPress={() => alert('a')}>Whale Scale</Text>
+        <Text style={_styles.label} >{Lc.density} ( <Text style={_styles.t_menu} onPress={() => navigation.dispatch(jumpSetting)}>{L.scale[Sc.code]}</Text> ) </Text>
       </View>
-      <Input placeholder={Lc.density} errorStyle={{ color: 'red' }} value={density} errorMessage={err_density} onChangeText={(val) => onChangeInput(val, setDensity, setErrDensity, Lc)} onSubmitEditing={(e) => onSubmit(e, Lc, datas, setters, setErrDensity, err_setters)} />
+      <Input placeholder={Lc.density} errorStyle={{ color: 'red' }} value={density} errorMessage={err_density} onChangeText={(val) => onChangeInput(val, setDensity, setErrDensity, Lc)} onSubmitEditing={(e) => onSubmit(e, Sc, Lc, datas, setters, setErrDensity, err_setters)} />
 
       <Text style={_styles.label}>{Lc.threads}</Text>
-      <Input placeholder={Lc.threads} errorStyle={{ color: 'red' }} value={threads} errorMessage={err_threads} onChangeText={(val) => onChangeInput(val, setThreads, setErrThreads, Lc)} onSubmitEditing={(e) => onSubmit(e, Lc, datas, setters, setErrThreads, err_setters)} />
+      <Input placeholder={Lc.threads} errorStyle={{ color: 'red' }} value={threads} errorMessage={err_threads} onChangeText={(val) => onChangeInput(val, setThreads, setErrThreads, Lc)} onSubmitEditing={(e) => onSubmit(e, Sc, Lc, datas, setters, setErrThreads, err_setters)} />
 
-      <Text style={_styles.label}>{Lc.length}   <Text style={_styles.t_menu} onPress={() => alert('asdf')}>Centi Meter</Text></Text>
-      <Input placeholder={Lc.length}   errorStyle={{ color: 'red' }} value={length} errorMessage={err_length}  onChangeText={(val) => onChangeInput(val, setLength,   setErrLength, Lc)} onSubmitEditing={(e) => onSubmit(e, Lc, datas, setters, setErrLength,  err_setters)} />
+      <Text style={_styles.label}>{Lc.length}</Text>
+      <Input placeholder={Lc.length}   errorStyle={{ color: 'red' }} value={length} errorMessage={err_length}  onChangeText={(val) => onChangeInput(val, setLength,   setErrLength, Lc)} onSubmitEditing={(e) => onSubmit(e, Sc, Lc, datas, setters, setErrLength,  err_setters)} />
 
       <Divider />
 

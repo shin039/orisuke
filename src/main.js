@@ -15,7 +15,7 @@ import {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { store }                              from 'orisuke/src/redux/Store';
-import { setLocale }                          from 'orisuke/src/redux/Action';
+import { setLocale, setScale }                from 'orisuke/src/redux/Action';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Import from Orisuke
@@ -26,8 +26,9 @@ import CountCalc   from 'orisuke/src/screen/CountCalc';
 import LengthCalc  from 'orisuke/src/screen/LengthCalc';
 import Settings    from 'orisuke/src/screen/Settings';
 
-import {fetchLocaleCode}  from 'orisuke/src/settings/asyncStorage';
-import {getLocale}        from 'orisuke/src/settings/locale';
+import {fetchLocaleCode, fetchScaleCode} from 'orisuke/src/settings/asyncStorage';
+import {getLocale}                       from 'orisuke/src/settings/locale';
+import {getScale}                        from 'orisuke/src/settings/scale';
 
 import {getHeaderStyle, getDrawerStyle} from 'orisuke/src/styles/main_styles';
 
@@ -40,18 +41,18 @@ function ExMenu(props){
   const drawerStyle = getDrawerStyle();
 
   return (
-      <DrawerContentScrollView {...props}>
-        {/* Draw.Screenの子要素 */}
-        <DrawerItemList {...props} />
+    <DrawerContentScrollView {...props}>
+    {/* Draw.Screenの子要素 */}
+    <DrawerItemList {...props} />
 
-        {/* Close Button */}
-        <DrawerItem 
-           label={Lc.ex_menu.close}
-           onPress={() => {props.navigation.closeDrawer();}}
-           labelStyle={{...drawerStyle.closeBtn}}
-        />
-      </DrawerContentScrollView>
-    );
+    {/* Close Button */}
+    <DrawerItem 
+      label={Lc.ex_menu.close}
+      onPress={() => {props.navigation.closeDrawer();}}
+      labelStyle={{...drawerStyle.closeBtn}}
+    />
+    </DrawerContentScrollView>
+  );
 }
 
 // Init Function on After Render
@@ -60,6 +61,7 @@ function init(param){
 
   // ロケールを設定ファイルから取得し、reduxにdiaptchする。
   fetchLocaleCode( code => { const Lc = getLocale(code); dispatch(setLocale(Lc)) });
+  fetchScaleCode ( code => { const Sc = getScale(code) ; dispatch(setScale(Sc))  });
 }
 
 // Drawer Navigater

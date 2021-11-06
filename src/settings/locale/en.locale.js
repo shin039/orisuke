@@ -24,7 +24,7 @@ export default {
     threads  : "Threads",
     length   : "Length",
   },
-  settings   : { name: "Settings", language: "Language"},
+  settings   : { name: "Settings", language: "Language", scale: "Scale"},
   scale      : {kujira: "Whale Scale", inch: "Inch Scale", cm: "Centi Meter"},
   _library   : { name: "Library"     },
 }

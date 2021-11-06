@@ -24,7 +24,7 @@ export default {
     threads  : "本数",
     length   : "長さ",
   },
-  settings   : { name: "設定", language: "言語"},
+  settings   : { name: "設定", language: "言語", scale: "スケール"},
   scale      : {kujira: "鯨寸", inch: "インチ", cm: "センチ"},
   _library   : { name: "ライブラリ" },
 }
