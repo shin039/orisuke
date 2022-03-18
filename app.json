@@ -17,14 +17,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "work.startlab.orisuke"
     },
     "android": {
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-6727797435169197~1181265288"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#215270"
       },
-      "package": "com.orisuke",
+      "package": "work.startlab.orisuke",
       "permissions": [],
       "versionCode": 1
     },

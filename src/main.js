@@ -2,6 +2,7 @@
 // Import from Native
 // -----------------------------------------------------------------------------
 import React, {useEffect}      from 'react';
+import { StatusBar }           from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   createDrawerNavigator,
@@ -77,15 +78,20 @@ function DrawScreen(){
   useEffect(() => { init(param) },　[]);
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator screenOptions={{...drawerStyle.drawer}} drawerContent={(props) => <ExMenu {...props} />}
-    >
-        <Drawer.Screen name={"CountCalc"}  options={{title: Lc.count_calc.name,  ...headerStyle}} component={CountCalc}  />
-        <Drawer.Screen name={"LengthCalc"} options={{title: Lc.length_calc.name, ...headerStyle}} component={LengthCalc} />
-        <Drawer.Screen name={"Settings"}   options={{title: Lc.settings.name,    ...headerStyle}} component={Settings}   />
-        {/*<Drawer.Screen name={"Library"}    options={{title: Lc._library.name}}    component={_Library}   />*/}
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <>
+      {/* Status Bar Setting */}
+      <StatusBar/>
+      {/* Navigation and Main Content */}
+      <NavigationContainer>
+        <Drawer.Navigator screenOptions={{...drawerStyle.drawer}} drawerContent={(props) => <ExMenu {...props} />}
+      >
+          <Drawer.Screen name={"CountCalc"}  options={{title: Lc.count_calc.name,  ...headerStyle}} component={CountCalc}  />
+          <Drawer.Screen name={"LengthCalc"} options={{title: Lc.length_calc.name, ...headerStyle}} component={LengthCalc} />
+          <Drawer.Screen name={"Settings"}   options={{title: Lc.settings.name,    ...headerStyle}} component={Settings}   />
+          {/*<Drawer.Screen name={"Library"}    options={{title: Lc._library.name}}    component={_Library}   />*/}
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
