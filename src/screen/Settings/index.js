@@ -3,7 +3,8 @@
 // -----------------------------------------------------------------------------
 import React, {useState}            from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, Text, Picker }       from 'react-native';
+import { View, Text }               from 'react-native';
+import { Picker }                   from '@react-native-picker/picker';
 import { Divider }                  from 'react-native-elements';
 
 // Orisuke's Library

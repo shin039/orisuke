@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 // Import from Native
 // -----------------------------------------------------------------------------
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // AsyncStorageに保存しておく格納キー
 const KEY={
